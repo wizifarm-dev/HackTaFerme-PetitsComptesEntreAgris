@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Operation{% endblock %}
+
+{% block body %}
+    <div class="flex ">
+        <a class="block" href="{{ path('team_operations_index', {'id': operation.team.id}) }}">
+            <svg class="h-8 w-8 fill-current text-grey flex-no-grow"
+                 xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 20 20">
+                <path d="M7.05 9.293L6.343 10 12 15.657l1.414-1.414L9.172 10l4.242-4.243L12 4.343z"/>
+            </svg>
+        </a>
+        <div class="flex-grow text-center align-middle">
+            <h1 class="text-blue-light -ml-8">{{ operation.name }}</h1>
+        </div>
+    </div>
+
+    <div class="text-center m-auto w-5/6 text-black mb-12">
+        <div class="m-auto w-3/5 mt-10 mb-10">
+            <div class="topMainShowOperation">
+                <p class="text-5xl mb-2">{{ operation.quantity }} h</p>
+                <p class="">{{ operation.resource }}</p>
+            </div>
+            <p class="text-2xl mt-4">{{ operation.resource.hourlyCost * operation.quantity}} €</p>
+        </div>
+        <div class="bg-grey-lighter pt-4 pb-4 pr-8 pl-8 rounded-lg ">
+            <p class="mb-1">Fait le {{ operation.date ?  operation.date| localizeddate('medium', 'none', 'fr') : '' }}</p>
+            <p class="mb-1">par {{ operation.user }}</p>
+            <p class="mb-1">pour {{ operation.createdBy }} </p>
+        </div>
+    </div>
+
+    <div class="text-center flex flex-column justify-around mt-12 ">
+        <a class="btn pl-8 pr-8 font-bold flex" href="{{ path('operation_edit', {'id': operation.id}) }}">Modifier</a>
+        {{ include('operation/_delete_form.html.twig') }}
+
+    </div>
+
+{% endblock %}

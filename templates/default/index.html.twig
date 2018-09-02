@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Soulte{% endblock %}
+
+{% block body %}
+    <div class="mb-8 text-center"><h2>Mes groupes</h2></div>
+
+    {% for team in teams %}
+        {% set equalizationPayment = team.equalizationPayment(app.user) %}
+        <div class="flex items-center justify-between row">
+            <div class="flex items-center">
+                <div class="">
+                    <div class="rounded-full h-6 w-6 items-center justify-center bg-{{ equalizationPayment < 0 ? 'red' : 'green' }}">&nbsp;</div>
+                </div>
+                <div class="ml-2">
+                    <a href="{{ path('team_show', {id: team.id}) }}" class="font-bold text-grey-darker">{{ team.name }}</a>
+                </div>
+            </div>
+            <div class="flex items-center">
+                <div class="">
+                    <span class="font-bold text-{{ equalizationPayment < 0 ? 'red' : 'green' }}">{{ equalizationPayment|number_format }} &euro;</span>
+                </div>
+                <div class="">
+                    <a href="{{ path('team_show', {id: team.id}) }}"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 fill-current text-grey flex-no-grow" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg></a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-notice">
+            Définissez votre premier groupe !
+        </div>
+    {% endfor %}
+    <div class="flex items-center h-12 p-4 mt-4">
+        <div class="">
+            <div class="rounded-full h-6 w-6 text-bolder text-white bg-blue flex items-center justify-center">+</div>
+        </div>
+        <div class="ml-2">
+            <a href="{{ path('team_new') }}" class="font-bold text-grey ">Créer un groupe</a>
+        </div>
+    </div>
+    <div class="mt-4 mb-8 text-center"><h2>Dernières opérations</h2></div>
+    {% for operation in operations %}
+        <a class="block" href="{{ path('operation_show', {'id': operation.id}) }}">
+            <div class="history-line">
+                <div>
+                    <p>{{ operation.name }} | <span class="text-sm">{{ operation.resource }}</span></p>
+                    <p class="history-author font-bold">Fait par {{ operation.createdBy.firstName }} {{ operation.createdBy.lastName|upper }}
+                </div>
+                <p class="font-bold">{{ operation.quantity }} h</p>
+            </div>
+        </a>
+    {% else %}
+        <div class="alert alert-notice">
+            <p >Aucune opération pour le moment... ça va venir !</p>
+        </div>
+    {% endfor %}
+{% endblock %}

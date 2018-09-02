@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Petits comptes entre agris | HackTaFerme | {% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('build/images/favicon.ico') }}" />
+        <link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}" />
+
+        <link rel="manifest" href="/manifest.json">
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+        {% endblock %}
+    </head>
+    <body class="{% block body_class '' %}">
+        {% block base_body %}
+        <header class="mb-4">
+            <nav class="flex flex-row items-center content-center justify-between bg-blue-dark p-3 pl-4 pr-4">
+                <a href="{{ path('dashboard') }}" class="mr-4">
+                    <img src="{{ asset('build/images/logo-header.svg') }}">
+                </a>
+                <button class="flex-right border-white border-solid border-2 rounded-full p-3" data-toggle="collapse" data-target="#menu" aria-expanded="false" aria-controls="menu">
+                    <div class="h-4">
+                        <svg class="h-4 w-4 fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M5 5a5 5 0 0 1 10 0v2A5 5 0 0 1 5 7V5zM0 16.68A19.9 19.9 0 0 1 10 14c3.64 0 7.06.97 10 2.68V20H0v-3.32z"/></svg>
+                    </div>
+                </button>
+                {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <div>
+                        <a href="{{ path('fos_user_security_login') }}" class="no-underline inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-dark hover:bg-white mt-4 lg:mt-0">Connexion</a>
+                    </div>
+                {% endif %}
+            </nav>
+            <div class="collapse" id="menu">
+                <ul class="list-reset shadow">
+                    <li class="text-center py-4 border-b">
+                        <a class="text-blue" href="#">Mon compte</a>
+                    </li>
+                    <li class="text-center py-4 border-b">
+                        <a class="text-blue" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="container mx-auto px-4">
+            <main>
+                {% block body %}{% endblock %}
+            </main>
+
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <div class="h-24">&nbsp;</div>
+                <div class="container mx-auto fixed pin-x pin-b z-30">
+                    <footer>
+                        <div class="shadow-inner flex items-center bg-blue-darker px-4 uppercase text-xs ">
+                            <div class="flex-1 text-center px-4 py-4 h-16 mb-1">
+                                <a href="{{ path('dashboard') }}" class="text-blue-light hover:text-white block">
+                                    <img src="/svg/farm.svg" class="h-6 fill-current text-blue-light mb-1">
+                                    <br />Accueil</a>
+                            </div>
+                            <div class="flex-1 text-center px-4 py-4 h-16 mb-1">
+                                <a href="{{ path('operation_new') }}" class="text-blue-light hover:text-white block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="mb-1 h-6 fill-current text-white"><path d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2v4zm-1 11a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg
+                                    ><br />Opération</a>
+                            </div>
+                            <div class="flex-1 text-center px-4 py-4 h-16  mb-1">
+                                <a href="{{ path('resource_index') }}" class="text-blue-light hover:text-white block">
+                                    <img src="/svg/tractor.svg" class="h-6 fill-current text-blue-light mb-1">
+                                    <br /> Ressources
+                                </a>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            {% endif %}
+        </div>
+        {% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('build/js/app.js') }}"></script>
+            <script>
+                if (navigator.serviceWorker) {
+                    const swPath = (window.site && window.site.sw) || '/sw.js';
+                    navigator.serviceWorker.register(swPath).then((reg) => {
+                        if (!reg.installing) {
+                            return;
+                        }
+
+                        console.log("[*] ServiceWorker is installing...");
+                        const worker = reg.installing;
+
+                        worker.addEventListener('statechange', () => {
+                            if (worker.state == 'redundant') {
+                                console.log('[*] ServiceWorker Install failed');
+                            }
+                            if (worker.state == 'installed') {
+                                console.log('[*] ServiceWorker Install successful!');
+                            }
+
+                            if (worker.state == 'activated' && !navigator.serviceWorker.controller) {
+                                // VOTRE CODE SI LE SERVICE WORKERS EST ACTIVÉ
+                            }
+                        });
+
+                    });
+                }
+            </script>
+        {% endblock %}
+    </body>
+</html>

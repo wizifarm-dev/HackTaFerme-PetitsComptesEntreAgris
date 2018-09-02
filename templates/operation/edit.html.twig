@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une opération{% endblock %}
+
+{% block body %}
+    <h1>Modifier une opération</h1>
+    {{ include('operation/_form.html.twig', {'button_label': 'Modifer'}) }}
+{% endblock %}

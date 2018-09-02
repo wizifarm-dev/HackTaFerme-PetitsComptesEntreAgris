@@ -1,0 +1,31 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="logo-container">
+    <img src="{{ asset('build/images/logo.svg') }}" />
+</div>
+
+<div class="form-container mb-8">
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        {% if error %}
+            <div class="alert alert-error mb-8" role="alert">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        {% endif %}
+
+        <input type="text" id="username" name="_username" value="{{ last_username }}"
+               required="required" autocomplete="username"
+                placeholder="Email"/>
+
+        <input type="password" id="password" name="_password" required="required"
+               autocomplete="current-password"
+               placeholder="{{ 'security.login.password'|trans }}"/>
+
+        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn" />
+    </form>
+</div>
+<div class="my-8 mx-8 text-center">
+    <p class="text-yellow-darker">Vous n'avez pas encore de compte, <a href="{{ path('fos_user_registration_register') }}" class="text-yellow-darker font-semibold">inscrivez-vous</a> !</p>
+</div>

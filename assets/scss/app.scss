@@ -1,0 +1,134 @@
+@import '~easy-autocomplete/dist/easy-autocomplete.css';
+
+@import url("https://fonts.googleapis.com/css?family=Damion");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+@tailwind preflight;
+
+body {
+    @apply .text-grey-darker .font-roboto .bg-white;
+}
+
+.logo-container {
+    @apply .align-middle .block .rounded-full .w-32 .h-32 .mx-auto .mt-1/5;
+}
+
+.logo-text {
+    @apply text-center text-white align-middle text-3xl font-bold;
+}
+
+.form-container {
+    @apply flex flex-col items-center m-auto mt-6;
+
+    div {
+        @apply w-full;
+    }
+}
+
+h1,
+h2,
+h3 {
+    @apply .font-medium .text-4xl .text-blue .font-damion;
+}
+
+a {
+    @apply .no-underline;
+    &:hover {
+        @apply .text-grey-darker;
+    }
+}
+
+label {
+    @apply .block .text-grey-darker .text-sm .font-bold .mb-2;
+}
+
+input {
+    @apply .shadow .appearance-none .border .rounded-lg .w-full .py-2 .px-3 .text-grey-darker .leading-tight .h-12 .mb-4;
+
+    &::placeholder {
+        @apply .text-center .text-grey .opacity-100;
+    }
+}
+
+input.btn {
+    @apply h-16;
+}
+
+.btn {
+    @apply .shadow .bg-gradient-blue-blue-darker .text-white .font-bold .py-4 .px-4 .border-b-4 .border-blue-darkest .rounded-lg;
+    &:hover {
+        @apply .bg-gradient-blue-light-blue .border-blue-dark .text-white;
+    }
+    &-danger {
+        @apply .bg-gradient-red-red-darker .border-red-darkest;
+        &:hover {
+            @apply .bg-gradient-red-light-red .border-red-dark;
+        }
+    }
+    &-save {
+        @apply .bg-gradient-green-green-darker .border-green-darkest;
+        &:hover {
+            @apply .bg-gradient-green-light-green .border-green-dark;
+        }
+    }
+    &-header {
+        @apply .block;
+    }
+}
+
+.alert {
+    @apply .px-4 .py-3 .rounded-lg .font-semibold;
+    &-notice {
+        @apply .bg-yellow-lighter .border .border-yellow-dark .text-yellow-darker;
+    }
+    &-error {
+        @apply .bg-red-lighter .border .border-red-dark .text-red-dark;
+    }
+}
+
+.history-line {
+    @apply .flex .justify-between .text-black .pt-3 .pb-3 .mr-3 .ml-3;
+    border-bottom: 1px solid darkgrey;
+}
+
+.history-author {
+    @apply .text-sm .text-grey .mt-2;
+}
+
+.row {
+    @apply .p-4 .border-b-2 .border-grey-light;
+}
+
+.svg-icon {
+    @apply .text-xs;
+}
+
+.auth-wallpaper {
+    background-image: url("/images/background.jpg");
+}
+
+.select {
+    @apply shadow bg-white text-center border rounded-lg w-full py-2 px-3
+            text-grey-darker leading-tight h-12 mb-4;
+
+    &::after {
+        @apply text-black bg-black;
+    }
+
+    &.placeholder {
+        @apply .text-grey;
+
+        text-align-last: center;
+    }
+}
+
+.topMainShowOperation {
+    border-bottom: 1px solid darkgrey;
+    @apply pb-6;
+}
+
+.collapse:not(.show) {
+    @apply .hidden;
+}
+
+@tailwind utilities;

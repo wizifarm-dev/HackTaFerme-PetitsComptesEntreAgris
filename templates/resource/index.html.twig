@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des ressources{% endblock %}
+
+{% block body %}
+    <div class="mb-8 text-center"><h2>Liste des ressources</h2></div>
+    <div class="mb-8 text-center"><a href="{{ path('resource_new') }}" class="btn btn-header">Créer une nouvelle ressource</a></div>
+    {% for resource in resources %}
+        <div class="flex justify-between row">
+            <div class="flex-1">{{ resource.name }}</div>
+            <div class="flex-1 text-right"><strong class="font-bold">{{ resource.hourlyCost }} &euro;/h</strong></div>
+        </div>
+    {% else %}
+        <div class="alert alert-notice">
+            Pas de ressources
+        </div>
+    {% endfor %}
+{% endblock %}

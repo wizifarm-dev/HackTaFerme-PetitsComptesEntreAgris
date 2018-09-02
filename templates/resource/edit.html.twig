@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Éditer ma resource{% endblock %}
+
+{% block body %}
+    <div class="mb-8 text-center"><h2>Éditer ma resource</h2></div>
+
+    {{ include('resource/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <div class="flex justify-between">
+        <div class="flex-1"><a href="{{ path('resource_index') }}">Retour à la liste</a></div>
+        <div class="flex-1">{{ include('resource/_delete_form.html.twig') }}</div>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block body_class 'auth-wallpaper' %}
+
+{% block base_body %}
+    <main class="container mx-auto pl-4 pr-4">
+        {% block body %}
+            <div>
+                {% block fos_user_content %}
+                {% endblock fos_user_content %}
+            </div>
+        {% endblock %}
+    </main>
+{% endblock %}

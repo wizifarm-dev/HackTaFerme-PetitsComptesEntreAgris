@@ -1,0 +1,12 @@
+{{ form_start(form) }}
+    {{ form_row(form.name, {label: false, attr: {placeholder: 'Nom de la ressource'}}) }}
+
+    <div class="flex items-center">
+        <div class="flex-grow">{{ form_row(form.hourlyCost, {label: false, attr: {placeholder: 'Coût'}}) }}</div>
+        <div class="flex-no-grow text-grey-dark pl-2 font-semibold">&euro;/heure</div>
+    </div>
+
+    <div class="flex justify-between">
+        <div class="flex-1 text-right "><button class="btn btn-save w-full">{{ button_label|default('Enregistrer') }}</button></div>
+    </div>
+{{ form_end(form) }}

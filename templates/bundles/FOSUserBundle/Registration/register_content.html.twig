@@ -1,0 +1,20 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="logo-container">
+    <img src="{{ asset('build/images/logo.svg') }}"/>
+</div>
+
+<div class="form-container mb-8">
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'),
+        'attr': {'class': 'w-full'}}) }}
+
+        {{ form_row(form.firstName, {'attr': { 'placeholder':'Prénom' }}) }}
+        {{ form_row(form.lastName, {'attr':{'placeholder':'Nom' }}) }}
+        {{ form_row(form.email, {'attr':{'placeholder':'Email' }, 'label': false }) }}
+        {{ form_row(form.plainPassword.first, {'attr': {'placeholder':'Mot de Passe' }, 'label': false}) }}
+        {{ form_row(form.plainPassword.second, {'attr':{'placeholder':'Confirmer le Mot de Passe'}, 'label': false}) }}
+
+    <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn" />
+
+    {{ form_end(form) }}
+</div>

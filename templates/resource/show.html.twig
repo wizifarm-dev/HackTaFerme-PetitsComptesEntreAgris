@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ressource{% endblock %}
+
+{% block body %}
+    <div class="mb-8 text-center"><h2>Ressource</h2></div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ resource.name }}</td>
+            </tr>
+            <tr>
+                <th>Coût horaire</th>
+                <td>{{ resource.hourlyCost }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="flex justify-between">
+        <div class="flex-1"><a href="{{ path('resource_index') }}" class="font-bold text-grey no-underline">Retour à la liste</a></div>
+        <div class="flex-1">{{ include('resource/_delete_form.html.twig') }}</div>
+        <div class="flex-1"><a href="{{ path('resource_edit', {'id': resource.id}) }}" class="btn">Éditer</a></div>
+    </div>
+{% endblock %}

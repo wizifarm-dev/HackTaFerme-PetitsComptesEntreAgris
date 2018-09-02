@@ -1,0 +1,29 @@
+<div class="form-container">
+{{ form_start(form) }}
+
+    {{ form_widget(form.date) }}
+
+    {{ form_widget(form.name, {'attr':{'placeholder':'Évènement'}}) }}
+
+    {{ form_widget(form.resource, {'attr':
+        {'class':'select'
+        }}) }}
+
+    <div>
+        {{ form_widget(form.quantity, {'attr': {'placeholder': 'Quantité', 'class': 'w-3/4'}}) }}
+        <span>heure(s)</span>
+    </div>
+
+    {{ form_widget(form.team, {'attr':
+        {'class':'select'
+        }})  }}
+
+    {{ form_widget(form.user, {'attr':
+        {'class':'select'
+        }})  }}
+
+    {{ form_widget(form) }}
+
+    <button class="btn btn-save w-full">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}
+</div>

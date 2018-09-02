@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes groupes{% endblock %}
+
+{% block body %}
+    <h1 class="text-center text-blue-light">Groupes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for team in teams %}
+            <tr>
+                <td>{{ team.name }}</td>
+                <td>
+                    <a href="{{ path('team_show', {'id': team.id}) }}">Voir</a>
+                    <a href="{{ path('team_edit', {'id': team.id}) }}">Éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Pas de groupe</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('team_new') }}">Créer un nouveau groupe</a>
+{% endblock %}

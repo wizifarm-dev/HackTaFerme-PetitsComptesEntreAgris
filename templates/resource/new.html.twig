@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle ressource{% endblock %}
+
+{% block body %}
+    <div class="flex">
+        <a class="block" href="{{ path('resource_index') }}">
+            <svg class="h-8 w-8 fill-current text-grey flex-no-grow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7.05 9.293L6.343 10 12 15.657l1.414-1.414L9.172 10l4.242-4.243L12 4.343z"/></svg>
+        </a>
+        <div class="flex-grow text-center align-middle">
+            <h2 class="-ml-4">Créer une nouvelle ressource</h2>
+        </div>
+    </div>
+
+    <div class="mb-8 py-4">
+        {{ include('resource/_form.html.twig') }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+    <script>
+        $( function() {
+            var options = {
+                data: {{ machinismCostsAutoCompleteData|json_encode|raw }},
+                getValue: "name",
+                list: {
+                    match: {
+                        enabled: true
+                    },
+                    onSelectItemEvent: function() {
+                        var value = $("#{{ form.name.vars.id }}").getSelectedItemData();
+
+                        $("#{{ form.name.vars.id }}").val(value.name).trigger("change");
+                        $("#{{ form.hourlyCost.vars.id }}").val(value.hourly_cost).trigger("change");
+                    }
+                }
+            };
+
+            $('#{{ form.name.vars.id }}').easyAutocomplete(options);
+        } );
+    </script>
+{% endblock %}

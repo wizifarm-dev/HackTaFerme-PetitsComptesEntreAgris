@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enregistrer une opération{% endblock %}
+
+{% block body %}
+    <div class="flex">
+        <div class="flex-grow text-center align-middle">
+            <h2 class="-ml-4 text-center">Enregistrer une opération</h2>
+        </div>
+    </div>
+
+    {{ include('operation/_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,6 @@
+{{ form_start(form) }}
+    {{ form_widget(form.name, {'attr': {'placeholder': 'Nom du groupe'}}) }}
+    <div class="flex justify-between">
+        <div class="flex-1 text-right"><button class="btn btn-save w-full">{{ button_label|default('Enregistrer') }}</button></div>
+    </div>
+{{ form_end(form) }}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inviter dans le groupe{% endblock %}
+
+{% block body %}
+    <div class="mb-8 text-center"><h2>Inviter dans le groupe</h2></div>
+
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.email, {'label': false, 'attr': {'placeholder': 'Email'}}) }}
+        <input type="submit" value="Envoyer" class="btn h-3" />
+    {{ form_end(form) }}
+
+{% endblock %}
