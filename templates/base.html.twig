@@ -35,11 +35,11 @@
             </nav>
             <div class="collapse" id="menu">
                 <ul class="list-reset shadow">
-                    <li class="text-center py-4 border-b">
-                        <a class="text-blue" href="#">Mon compte</a>
+                    <li class="text-center border-b">
+                        <a class="text-blue py-4 block" href="{{ path('my-account') }}">Mon compte</a>
                     </li>
-                    <li class="text-center py-4 border-b">
-                        <a class="text-blue" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+                    <li class="text-center border-b">
+                        <a class="text-blue py-4 block" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
                     </li>
                 </ul>
             </div>

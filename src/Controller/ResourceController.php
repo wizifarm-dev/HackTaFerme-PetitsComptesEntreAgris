@@ -23,7 +23,7 @@ class ResourceController extends AbstractController
     public function index(ResourceRepository $resourceRepository): Response
     {
         return $this->render('resource/index.html.twig', [
-            'resources' => $resourceRepository->findAll()
+            'resources' => $resourceRepository->findByOwner($this->getUser())
         ]);
     }
 

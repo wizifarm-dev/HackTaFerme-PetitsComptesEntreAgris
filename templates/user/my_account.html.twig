@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouveau groupe{% endblock %}
+{% block title %}Mon compte{% endblock %}
 
 {% block body %}
     <div class="flex">
@@ -8,11 +8,16 @@
             <svg class="h-8 w-8 fill-current text-grey flex-no-grow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7.05 9.293L6.343 10 12 15.657l1.414-1.414L9.172 10l4.242-4.243L12 4.343z"/></svg>
         </a>
         <div class="flex-grow text-center align-middle">
-            <h2 class="-ml-4 text-center">Créer un groupe</h2>
+            <h2 class="-ml-4 text-center">Mon compte</h2>
         </div>
     </div>
 
-    <div class="mb-8">
-        {{ include('team/_form.html.twig') }}
+    <div class="my-8">
+        {{ form_start(form) }}
+        {{ form_widget(form.avatarFile) }}
+        <div class="flex justify-between">
+            <div class="flex-1 text-right"><button class="btn btn-save w-full">{{ button_label|default('Enregistrer') }}</button></div>
+        </div>
+        {{ form_end(form) }}
     </div>
 {% endblock %}

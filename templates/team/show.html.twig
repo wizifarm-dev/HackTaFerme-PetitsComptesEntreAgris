@@ -19,7 +19,11 @@
             <div class="flex items-center justify-between row">
                 <div class="flex items-center">
                     <div class="">
-                        <div class="rounded-full h-6 w-6 items-center justify-center bg-{{ equalizationPayment < 0 ? 'red' : 'green' }}">&nbsp;</div>
+                        {% if user.avatar %}
+                            <img src="{{ vich_uploader_asset(user, 'avatarFile') }}" class="w-10 h-10 rounded-full" />
+                        {% else %}
+                            <div class="rounded-full h-10 w-10 items-center justify-center bg-{{ equalizationPayment < 0 ? 'red' : 'green' }}">&nbsp;</div>
+                        {% endif %}
                     </div>
                     <div class="ml-2">{{ user.firstName }} {{ user.lastName|upper }}<br />
                     <p class="history-author font-bold">{{ user.customTitle }}</p>

@@ -5,14 +5,21 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use FOS\UserBundle\Model\User as BaseUser;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
+ * @Vich\Uploadable
  */
 class User extends BaseUser
 {
+    use TimestampableEntity;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -53,6 +60,23 @@ class User extends BaseUser
      * @ORM\Column(type="string", nullable=true)
      */
     private $customTitle;
+
+    /**
+     * @Vich\UploadableField(mapping="avatar", fileNameProperty="avatar")
+     *
+     * @Assert\Image(
+     *     maxSize="2048k",
+     *     mimeTypes={"image/png", "image/jpeg"}
+     * )
+     */
+    private $avatarFile;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $avatar;
 
     public function __construct()
     {
@@ -189,6 +213,7 @@ class User extends BaseUser
         return $this;
     }
 
+
     public function getCustomTitle(): ?string
     {
         return $this->customTitle;
@@ -199,6 +224,35 @@ class User extends BaseUser
         $this->customTitle = $customTitle;
 
         return $this;
+    }
+
+    public function setAvatarFile(?File $image = null): self
+    {
+        $this->avatarFile = $image;
+
+        if (null !== $image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime();
+        }
+
+        return $this;
+    }
+
+    public function getAvatarFile(): ?File
+    {
+        return $this->avatarFile;
+    }
+
+    public function setAvatar(?string $avatar): self
+    {
+        $this->avatar = $avatar;
+        return $this;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
     }
 
     public function __toString()
