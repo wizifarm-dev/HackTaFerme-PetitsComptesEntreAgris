@@ -1,6 +1,6 @@
 # Petits comptes entre agris
 
-Projet du [HackTaFerme](http://www.hacktaferme.com/).
+Projet du hackathon [HackTaFerme](http://www.hacktaferme.com/).
 
 ## Présentation
 
