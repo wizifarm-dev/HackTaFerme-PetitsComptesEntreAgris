@@ -1,10 +1,12 @@
 # Petits comptes entre agris
 
-https://hacktaferme.wizi.farm/
+Projet du [HackTaFerme](http://www.hacktaferme.com/).
 
 ## Présentation
 
 L'application qui simplifie la gestion de l'entraide entre agriculteurs.
+
+https://hacktaferme.wizi.farm/
 
 ## OS utilisé pour héberger la solution
 
@@ -20,7 +22,6 @@ Linux
 * MariaDB
 
 ## Éléments de paramétrage
-
 
 Configurer les paramètres dans un fichier `.env` (voir `.env.dist`).
 
