@@ -31,9 +31,11 @@ Le seul paramètre important est celui de la base de données : `DATABASE_URL`.
 
 Puis faire pour construire le projet :
 
-* make install
-* make db
+* `make install`
+* `make db`
+
+Pour importer les données API-AGRO : `bin/console app:load-machinism-costs`
 
 Pour lancer un serveur web :
 
-* bin/console server:run
+* `bin/console server:run`
