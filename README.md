@@ -6,6 +6,8 @@ Projet du hackathon [HackTaFerme](http://www.hacktaferme.com/).
 
 L'application qui simplifie la gestion de l'entraide entre agriculteurs.
 
+![Logo](https://github.com/ter-informatique/HackTaFerme-PetitsComptesEntreAgris/raw/master/public/images/logo-pwa-512.png)
+
 https://hacktaferme.wizi.farm/
 
 ## OS utilisé pour héberger la solution
