@@ -1,6 +1,6 @@
 # Petits comptes entre agris
 
-Projet du hackathon [HackTaFerme](http://www.hacktaferme.com/).
+Projet du hackathon [HackTaFerme](http://www.hacktaferme.com/) : https://petitscomptes.wizi.farm/.
 
 ## Présentation
 
@@ -8,7 +8,7 @@ L'application qui simplifie la gestion de l'entraide entre agriculteurs.
 
 ![Logo](https://github.com/ter-informatique/HackTaFerme-PetitsComptesEntreAgris/raw/master/public/images/logo-pwa-512.png)
 
-https://hacktaferme.wizi.farm/
+https://petitscomptes.wizi.farm/
 
 ## OS utilisé pour héberger la solution
 
